@@ -1,6 +1,6 @@
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
-import Main from "./components/renderDatas/Main";
+import Main from "./components/main/Main";
 
 function App(props) {
   return (
