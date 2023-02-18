@@ -81,18 +81,18 @@
 }
 
 .card {
-  background: rgb(211, 175, 175);
+  /* background: rgb(211, 175, 175); */
 }
 
 .datasGridContainer {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  gap: 20px 20px;
+  gap: 0px 20px;
   grid-auto-flow: row;
   grid-template-areas:
     "city-and-country graph graph"
-    "temperatures graph graph"
+    "secondary-datas graph graph"
     "coordinates graph graph";
 }
 
@@ -104,8 +104,8 @@
   grid-area: city-and-country;
 }
 
-.temperatures {
-  grid-area: temperatures;
+.secondary-datas {
+  grid-area: secondary-datas;
 }
 
 .graph {

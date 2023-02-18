@@ -1,6 +1,7 @@
 import "./Main.css";
 import React from "react";
 import { useState } from "react";
+import moment from "moment";
 // import RenderDatas from "../renderDatas/RenderDatas";
 
 function Main(props) {
@@ -15,7 +16,7 @@ function Main(props) {
   const apiKey = "5a8deffcb12650777e1969f671422327";
   let fetchedDatas = {};
   // let loadDatasToUI = false;
-  let [renderedCity, setRenderedCity] = useState("--");
+  let [renderedCity, setRenderedCity] = useState("--city--");
   let [desc, setDesc] = useState("--desc--");
   let [country, setCountry] = useState("--country--");
   let [sunrise, setSunrise] = useState("--sunrise--");
@@ -39,6 +40,7 @@ function Main(props) {
     console.log(e.target.value);
     console.log(city);
   };
+
   // geolocation api
   // http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={API key}
 
@@ -56,7 +58,7 @@ function Main(props) {
         city = data[0].name;
         lat = data[0].lat;
         lon = data[0].lon;
-        console.log("fetching coods from city name:" + lat, lon);
+        // console.log("fetching coods from city name:" + lat, lon);
       })
       .then(() => {
         fetchFromGeoCode();
@@ -72,6 +74,7 @@ function Main(props) {
       .then((data) => {
         // console.log(data);
         // console.log("The whether is: " + data.weather[0].main);
+
         fetchedDatas = {
           cityName: city,
           desc: data.weather[0].description,
@@ -81,9 +84,9 @@ function Main(props) {
           fahreit: data.main.temp,
           maxFahreit: data.main.temp_max,
           minFahreit: data.main.temp_min,
-          celsius: data.main.temp / 2,
-          maxCelsius: data.main.temp_max / 2,
-          minCelsius: data.main.temp_min / 2,
+          celsius: data.main.temp,
+          maxCelsius: data.main.temp_max,
+          minCelsius: data.main.temp_min,
           longitude: data.coord.lon,
           latitude: data.coord.lat,
           hours168: "hours",
@@ -91,11 +94,40 @@ function Main(props) {
           windDeg: data.wind.deg,
           windSpeed: data.wind.speed,
         };
-        console.log(fetchedDatas);
-        console.log(data);
+
+        let convertedToCelsius = fetchedDatas.celsius - 273.15;
+        convertedToCelsius = Math.round(convertedToCelsius * 10) / 10;
+
+        let convertedToMinCelsius = fetchedDatas.minCelsius - 273.15;
+        convertedToMinCelsius = Math.round(convertedToMinCelsius * 10) / 10;
+
+        let convertedToMaxCelsius = fetchedDatas.maxCelsius - 273.15;
+        convertedToMaxCelsius = Math.round(convertedToMaxCelsius * 10) / 10;
+
+        console.log(fetchedDatas.sunset);
+        let timestamp = 1676703275;
+        // let timestamp = fetchedDatas.sunrise;
+        console.log(timestamp);
+
+        let sunriseTime = moment(timestamp).format("LT");
+
+        // console.log(data);
         setRenderedCity(fetchedDatas.cityName);
+        setCelsius(convertedToCelsius);
+        setDesc(fetchedDatas.desc);
+        setMinCelsius(convertedToMinCelsius);
+        setMaxCelsius(convertedToMaxCelsius);
+        setWindSpeed(fetchedDatas.windSpeed);
+        setWindDeg(fetchedDatas.windDeg);
+        setSunrise(sunriseTime);
+        // setSunset(sunsetTime);
+        // setSunrise(fetchedDatas.sunrise);
+        // setSunset(fetchedDatas.sunset);
+        setLongitude(fetchedDatas.longitude);
+        setLatitude(fetchedDatas.latitude);
 
         // console.log(data.wind.deg);
+        // console.log(fetchedDatas.celsius + 10000000000);
       });
     // loadDatasToUI = true;
   }
@@ -127,11 +159,13 @@ function Main(props) {
           <div className="coordinates">
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <h5 className="card-title">Coordinates</h5>
+                {/* <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6> */}
                 <p className="card-text">
-                  {renderedCity}Some quick example text to build on the card
-                  title and make up the bulk of the card's content.
+                  longitude: <br></br>
+                  {longitude} <br></br>
+                  latitude: <br></br>
+                  {latitude}
                 </p>
               </div>
             </div>
@@ -140,24 +174,30 @@ function Main(props) {
             {" "}
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <div className="d-flex justify-content-between">
+                  <h5 className="card-title">{renderedCity}</h5>
+                  <h5 className="card-title">{celsius}°C</h5>
+                </div>
+
+                <h6 className="card-subtitle mb-2 text-muted">{desc}</h6>
                 <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  min: {minCelsius}°C <br></br>
+                  max: {maxCelsius}°C
                 </p>
               </div>
             </div>
           </div>
-          <div className="temperatures">
+          <div className="secondary-datas">
             {" "}
             <div className="card">
               <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                <div className="d-flex justify-content-between">
+                  <h5 className="card-title">Wind</h5>
+                </div>
+                {/* <h6 className="card-subtitle mb-2 text-muted">{desc}</h6> */}
                 <p className="card-text">
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  speed: {windSpeed} km/hour <br></br>
+                  degree: {windDeg}°
                 </p>
               </div>
             </div>
