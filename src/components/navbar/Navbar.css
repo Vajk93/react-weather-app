@@ -2,3 +2,7 @@
   width: 100vw;
   background: rgb(165, 240, 232);
 }
+
+.navbar-nav {
+  margin-left: auto;
+}
