@@ -1,12 +1,12 @@
 import "./App.css";
 import Navbar from "./components/navbar/Navbar";
-import Hero from "./components/hero/Hero";
+import Main from "./components/renderDatas/Main";
 
-function App() {
+function App(props) {
   return (
     <div>
       <Navbar />
-      <Hero />
+      <Main />
     </div>
   );
 }
