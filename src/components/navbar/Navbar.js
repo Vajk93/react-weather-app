@@ -23,7 +23,7 @@ function Navbar() {
             <div className="collapse navbar-collapse" id="navbarNav">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a href="./" className="nav-link active" aria-current="page">
+                  <a href="./" className="nav-link" aria-current="page">
                     Home
                   </a>
                 </li>
@@ -38,7 +38,7 @@ function Navbar() {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a href="./" className="nav-link disabled">
+                  <a href="./" className="nav-link">
                     Disabled
                   </a>
                 </li>

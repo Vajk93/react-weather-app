@@ -18,17 +18,17 @@ function Main() {
   let lon;
   const apiKey = "5a8deffcb12650777e1969f671422327";
   let fetchedDatas = {};
-  let [renderedCity, setRenderedCity] = useState("--city--");
-  let [desc, setDesc] = useState("--desc--");
-  let [celsius, setCelsius] = useState("--celsius--");
-  let [maxCelsius, setMaxCelsius] = useState("--maxCelsius--");
-  let [minCelsius, setMinCelsius] = useState("--minCelsius--");
-  let [longitude, setLongitude] = useState("--longitude--");
-  let [latitude, setLatitude] = useState("--latitude--");
+  let [renderedCity, setRenderedCity] = useState("--");
+  let [desc, setDesc] = useState("--");
+  let [celsius, setCelsius] = useState("--");
+  let [maxCelsius, setMaxCelsius] = useState("--");
+  let [minCelsius, setMinCelsius] = useState("--");
+  let [longitude, setLongitude] = useState("--");
+  let [latitude, setLatitude] = useState("--");
   // let [hours168, setHours168] = useState("--hours168--");
   // let [temps168, setTemps168] = useState("--temps168--");
-  let [windDeg, setWindDeg] = useState("--windDeg--");
-  let [windSpeed, setWindSpeed] = useState("--windSpeed--");
+  let [windDeg, setWindDeg] = useState("--");
+  let [windSpeed, setWindSpeed] = useState("--");
 
   const addValChangeHandler = (e) => {
     city = e.target.value;
@@ -119,7 +119,72 @@ function Main() {
   let day6 = moment().add(5, "days").format("dddd");
   let day7 = moment().add(6, "days").format("dddd");
 
-  let [tableRow, setTableRow] = useState("");
+  let row = (
+    <React.Fragment>
+      <tr>
+        <td>22:00</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+      </tr>
+      <tr>
+        <td>18:00</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+      </tr>
+      <tr>
+        <td>14:00</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+      </tr>
+      <tr>
+        <td>10:00</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+      </tr>
+      <tr>
+        <td>06:00</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+      </tr>
+      <tr>
+        <td>02:00</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+        <td>--°C</td>
+      </tr>
+    </React.Fragment>
+  );
+
+  let [tableRow, setTableRow] = useState(row);
 
   const fetchTableDatas = (latitude, longitude) => {
     fetch(
@@ -137,63 +202,63 @@ function Main() {
           <React.Fragment>
             <tr>
               <td>22:00</td>
-              <td>{temperatures[0][22]}</td>
-              <td>{temperatures[0][46]}</td>
-              <td>{temperatures[0][70]}</td>
-              <td>{temperatures[0][94]}</td>
-              <td>{temperatures[0][118]}</td>
-              <td>{temperatures[0][142]}</td>
-              <td>{temperatures[0][166]}</td>
+              <td>{temperatures[0][22]}°C</td>
+              <td>{temperatures[0][46]}°C</td>
+              <td>{temperatures[0][70]}°C</td>
+              <td>{temperatures[0][94]}°C</td>
+              <td>{temperatures[0][118]}°C</td>
+              <td>{temperatures[0][142]}°C</td>
+              <td>{temperatures[0][166]}°C</td>
             </tr>
             <tr>
               <td>18:00</td>
-              <td>{temperatures[0][18]}</td>
-              <td>{temperatures[0][42]}</td>
-              <td>{temperatures[0][66]}</td>
-              <td>{temperatures[0][90]}</td>
-              <td>{temperatures[0][114]}</td>
-              <td>{temperatures[0][138]}</td>
-              <td>{temperatures[0][162]}</td>
+              <td>{temperatures[0][18]}°C</td>
+              <td>{temperatures[0][42]}°C</td>
+              <td>{temperatures[0][66]}°C</td>
+              <td>{temperatures[0][90]}°C</td>
+              <td>{temperatures[0][114]}°C</td>
+              <td>{temperatures[0][138]}°C</td>
+              <td>{temperatures[0][162]}°C</td>
             </tr>
             <tr>
               <td>14:00</td>
-              <td>{temperatures[0][14]}</td>
-              <td>{temperatures[0][38]}</td>
-              <td>{temperatures[0][62]}</td>
-              <td>{temperatures[0][86]}</td>
-              <td>{temperatures[0][110]}</td>
-              <td>{temperatures[0][134]}</td>
-              <td>{temperatures[0][158]}</td>
+              <td>{temperatures[0][14]}°C</td>
+              <td>{temperatures[0][38]}°C</td>
+              <td>{temperatures[0][62]}°C</td>
+              <td>{temperatures[0][86]}°C</td>
+              <td>{temperatures[0][110]}°C</td>
+              <td>{temperatures[0][134]}°C</td>
+              <td>{temperatures[0][158]}°C</td>
             </tr>
             <tr>
               <td>10:00</td>
-              <td>{temperatures[0][10]}</td>
-              <td>{temperatures[0][34]}</td>
-              <td>{temperatures[0][58]}</td>
-              <td>{temperatures[0][82]}</td>
-              <td>{temperatures[0][106]}</td>
-              <td>{temperatures[0][130]}</td>
-              <td>{temperatures[0][154]}</td>
+              <td>{temperatures[0][10]}°C</td>
+              <td>{temperatures[0][34]}°C</td>
+              <td>{temperatures[0][58]}°C</td>
+              <td>{temperatures[0][82]}°C</td>
+              <td>{temperatures[0][106]}°C</td>
+              <td>{temperatures[0][130]}°C</td>
+              <td>{temperatures[0][154]}°C</td>
             </tr>
             <tr>
               <td>06:00</td>
-              <td>{temperatures[0][6]}</td>
-              <td>{temperatures[0][30]}</td>
-              <td>{temperatures[0][54]}</td>
-              <td>{temperatures[0][78]}</td>
-              <td>{temperatures[0][102]}</td>
-              <td>{temperatures[0][126]}</td>
-              <td>{temperatures[0][150]}</td>
+              <td>{temperatures[0][6]}°C</td>
+              <td>{temperatures[0][30]}°C</td>
+              <td>{temperatures[0][54]}°C</td>
+              <td>{temperatures[0][78]}°C</td>
+              <td>{temperatures[0][102]}°C</td>
+              <td>{temperatures[0][126]}°C</td>
+              <td>{temperatures[0][150]}°C</td>
             </tr>
             <tr>
               <td>02:00</td>
-              <td>{temperatures[0][2]}</td>
-              <td>{temperatures[0][26]}</td>
-              <td>{temperatures[0][50]}</td>
-              <td>{temperatures[0][74]}</td>
-              <td>{temperatures[0][98]}</td>
-              <td>{temperatures[0][122]}</td>
-              <td>{temperatures[0][146]}</td>
+              <td>{temperatures[0][2]}°C</td>
+              <td>{temperatures[0][26]}°C</td>
+              <td>{temperatures[0][50]}°C</td>
+              <td>{temperatures[0][74]}°C</td>
+              <td>{temperatures[0][98]}°C</td>
+              <td>{temperatures[0][122]}°C</td>
+              <td>{temperatures[0][146]}°C</td>
             </tr>
           </React.Fragment>
         );
@@ -220,7 +285,7 @@ function Main() {
             />
           </div>
           <br />
-          <button onClick={cityToGeoCode} id="btn" className="btn btn-primary">
+          <button onClick={cityToGeoCode} id="btn" className="btn">
             LET'S SEE
           </button>
         </div>
@@ -273,25 +338,22 @@ function Main() {
           <div className="graph">
             {" "}
             <div className="card">
-              <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <h6 className="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                <table class="GeneratedTable">
-                  <thead>
-                    <tr>
-                      <th>Hour</th>
-                      <th>{today}</th>
-                      <th>{tomorrow}</th>
-                      <th>{day3}</th>
-                      <th>{day4}</th>
-                      <th>{day5}</th>
-                      <th>{day6}</th>
-                      <th>{day7}</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {tableRow}
-                    {/* <tr>
+              <table className="GeneratedTable">
+                <thead>
+                  <tr>
+                    <th>Hour</th>
+                    <th>{today}</th>
+                    <th>{tomorrow}</th>
+                    <th>{day3}</th>
+                    <th>{day4}</th>
+                    <th>{day5}</th>
+                    <th>{day6}</th>
+                    <th>{day7}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tableRow}
+                  {/* <tr>
                       <td>22:00</td>
                       <td>Cell</td>
                       <td>Cell</td>
@@ -351,9 +413,8 @@ function Main() {
                       <td>Cell</td>
                       <td>Cell</td>
                     </tr> */}
-                  </tbody>
-                </table>
-              </div>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>

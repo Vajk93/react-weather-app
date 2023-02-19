@@ -14,6 +14,7 @@ table.GeneratedTable th {
   border-color: #ffcc00;
   border-style: solid;
   padding: 3px;
+  text-align: center;
 }
 
 table.GeneratedTable thead {
