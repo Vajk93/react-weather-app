@@ -1,6 +1,6 @@
 #navbar {
   width: 100vw;
-  background: var(--color1);
+  background: var(--color4);
 }
 
 .navbar-nav {
@@ -8,9 +8,10 @@
 }
 
 .navbar-nav a {
-  color: white;
+  color: var(--color1);
 }
 
 .navbar-brand {
-  color: white;
+  color: var(--color1);
+  font-weight: bolder;
 }

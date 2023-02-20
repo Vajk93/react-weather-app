@@ -13,7 +13,8 @@ function Main() {
 
   // the city is tricky, because we sent the city to a function, where it converts to cityToGeoCode, and the geocode will return the city again, just from API now
   let city;
-  let [writeInteractiveValue, setWriteInteractiveValue] = useState("na mizu?");
+  let [writeInteractiveValue, setWriteInteractiveValue] =
+    useState("Enter a city:");
   let lat;
   let lon;
   const apiKey = "5a8deffcb12650777e1969f671422327";
@@ -274,18 +275,20 @@ function Main() {
     <React.Fragment>
       <div id="section1" className="text-center">
         <div className="container">
-          <h1 className="pb-5">Wheater API</h1>
-          <p>{writeInteractiveValue}</p>
+          {/* <h1 className=" mainTitle pb-5">Wheater API</h1> */}
+          <h2 className="enter-a-city-interactive-sentence">
+            {writeInteractiveValue}
+          </h2>
           <div className="input-container">
             <input
               onChange={addValChangeHandler}
               id="input"
-              className="form-control w-50"
+              className="form-control"
               type="text"
             />
           </div>
           <br />
-          <button onClick={cityToGeoCode} id="btn" className="btn">
+          <button onClick={cityToGeoCode} id="btn" className="mybtn">
             LET'S SEE
           </button>
         </div>
@@ -296,12 +299,14 @@ function Main() {
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">Coordinates</h5>
-                <p className="card-text">
-                  longitude: <br></br>
-                  {longitude} <br></br>
-                  latitude: <br></br>
-                  {latitude}
-                </p>
+                <div className="d-flex justify-content-between">
+                  <p className="card-text">latitude:</p>
+                  <p className="card-text">{latitude}</p>
+                </div>
+                <div className="d-flex justify-content-between">
+                  <p className="card-text">longitude:</p>
+                  <p className="card-text">{longitude}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -314,35 +319,43 @@ function Main() {
                   <h5 className="card-title">{celsius}°C</h5>
                 </div>
                 <h6 className="card-subtitle mb-2 text-muted">{desc}</h6>
-                <p className="card-text">
-                  min: {minCelsius}°C <br></br>
-                  max: {maxCelsius}°C
-                </p>
+                <div className="d-flex justify-content-between">
+                  <p className="card-text">min:</p>
+                  <p className="card-text">{minCelsius}°C</p>
+                </div>
+                <div className="d-flex justify-content-between">
+                  <p className="card-text">max:</p>
+                  <p className="card-text">{maxCelsius}°C</p>
+                </div>
               </div>
             </div>
           </div>
-          <div className="secondary-datas">
+          <div className="wind">
             {" "}
             <div className="card">
               <div className="card-body">
                 <div className="d-flex justify-content-between">
                   <h5 className="card-title">Wind</h5>
                 </div>
-                <p className="card-text">
-                  speed: {windSpeed} km/hour <br></br>
-                  degree: {windDeg}°
-                </p>
+                <div className="d-flex justify-content-between">
+                  <p className="card-text">speed:</p>
+                  <p className="card-text">{windSpeed} km/hour</p>
+                </div>
+                <div className="d-flex justify-content-between">
+                  <p className="card-text">degree:</p>
+                  <p className="card-text">{windDeg}°</p>
+                </div>
               </div>
             </div>
           </div>
-          <div className="graph">
+          <div className="table">
             {" "}
-            <div className="card">
+            <div className="card card-for-table">
               <table className="GeneratedTable">
                 <thead>
                   <tr>
                     <th>Hour</th>
-                    <th>{today}</th>
+                    <th>Today</th>
                     <th>{tomorrow}</th>
                     <th>{day3}</th>
                     <th>{day4}</th>

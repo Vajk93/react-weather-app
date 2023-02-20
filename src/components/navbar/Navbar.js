@@ -7,7 +7,7 @@ function Navbar() {
         <nav className="navbar navbar-expand-lg">
           <div className="container-fluid">
             <a className="navbar-brand" href="./">
-              Navbar
+              Weather App
             </a>
             <button
               className="navbar-toggler"

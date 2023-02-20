@@ -8,11 +8,6 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.3.3",
     "bootstrap": "^5.2.3",
-<<<<<<< HEAD
-=======
-    "chart.js": "^4.2.1",
-    "charts.css": "^0.9.0",
->>>>>>> 7c2e2df08145ee1df6f7ac761f94079b5c76d423
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",

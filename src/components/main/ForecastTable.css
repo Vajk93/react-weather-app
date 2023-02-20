@@ -1,22 +1,31 @@
 table.GeneratedTable {
   width: 100%;
-  background-color: #ffffff;
-  border-collapse: collapse;
-  border-width: 2px;
-  border-color: #ffcc00;
-  border-style: solid;
-  color: #000000;
+  background: var(--color1);
+  /* border-collapse: collapse; */
+  /* border: 1px solid #ffcc00; */
+  color: var(--color4);
+  border: none;
 }
 
 table.GeneratedTable td,
 table.GeneratedTable th {
-  border-width: 2px;
-  border-color: #ffcc00;
-  border-style: solid;
+  /* border: 1px solid #ffcc00; */
   padding: 3px;
   text-align: center;
+  border: none;
 }
 
 table.GeneratedTable thead {
-  background-color: #ffcc00;
+  background: var(--color4);
+  color: var(--color1);
+  border: none;
+}
+
+table.GeneratedTable thead th {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.card-for-table {
+  overflow-x: scroll;
 }
