@@ -5,8 +5,6 @@ import moment from "moment";
 import "./ForecastTable.css";
 import CircularProgress from "@mui/material/CircularProgress";
 
-// import ForecastTable from "../forecast-table/ForecastTable";
-
 function Main() {
   // budapest coordinates for testing
   // let latitude = 47.53;
@@ -29,7 +27,6 @@ function Main() {
   let [isLoading, setIsLoading] = useState(false);
   // table loading is another, because it fetch from another API
   let [tableLoading, setTableLoading] = useState(false);
-  const apiKey = "5a8deffcb12650777e1969f671422327";
   let fetchedDatas = {};
   let [cityIsValid, setCityIsValid] = useState(true);
   let [renderedCity, setRenderedCity] = useState("--");
@@ -43,7 +40,9 @@ function Main() {
   // let [temps168, setTemps168] = useState("--temps168--");
   let [windDeg, setWindDeg] = useState("--");
   let [windSpeed, setWindSpeed] = useState("--");
-  let row = (
+  // i know, the API key shouldn't be here, but this is a practice project
+  const apiKey = "5a8deffcb12650777e1969f671422327";
+  let tableElements = (
     <React.Fragment>
       <tr>
         <td>22:00</td>
@@ -108,7 +107,7 @@ function Main() {
     </React.Fragment>
   );
 
-  let [tableRow, setTableRow] = useState(row);
+  let [tableRow, setTableRow] = useState(tableElements);
 
   const addValChangeHandler = (e) => {
     city = e.target.value;
@@ -154,7 +153,7 @@ function Main() {
         setWindDeg("--");
         setLongitude("--");
         setLatitude("--");
-        setTableRow(row);
+        setTableRow(tableElements);
         setWriteInteractiveValue("City doesn't exist 😔");
         console.log("City doesn't exist 😔");
         setCityIsValid(false);
@@ -232,7 +231,7 @@ function Main() {
         let temperatures = [data.hourly.temperature_2m];
         console.log(hours);
         console.log(temperatures);
-        let newRow = (
+        let newTableElements = (
           <React.Fragment>
             <tr>
               <td>22:00</td>
@@ -297,7 +296,7 @@ function Main() {
           </React.Fragment>
         );
         setTableLoading(false);
-        setTableRow(newRow);
+        setTableRow(newTableElements);
       })
       .catch((error) => {
         console.error(error);
