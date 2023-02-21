@@ -1,3 +1,7 @@
+main {
+  padding-bottom: 5em;
+}
+
 #section1 {
   text-align: center;
 }
@@ -18,6 +22,20 @@
 .form-control:focus {
   border-color: var(--color4);
   box-shadow: inset 0 1px 1px var(--color4), 0 0 2px var(--color4);
+}
+
+.errorMsg {
+  color: red;
+}
+
+.customLoaderContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 #datas {

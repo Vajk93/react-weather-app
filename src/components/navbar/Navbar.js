@@ -39,7 +39,7 @@ function Navbar() {
                 </li>
                 <li className="nav-item">
                   <a href="./" className="nav-link">
-                    Disabled
+                    Contact
                   </a>
                 </li>
               </ul>
