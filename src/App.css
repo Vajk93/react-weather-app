@@ -1,8 +1,8 @@
 :root {
-  --color1: #2a0944;
-  --color2: #3b185f;
+  --color1: #130d17;
+  --color2: #140c1c;
   --color3: #a12568;
-  --color4: #fec260;
+  --color4: rgb(229, 228, 228);
 }
 
 body {

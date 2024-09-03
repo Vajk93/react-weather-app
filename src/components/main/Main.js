@@ -186,6 +186,7 @@ function Main() {
           windDeg: data.wind.deg,
           windSpeed: data.wind.speed,
         };
+        console.log(fetchedDatas.desc);
 
         let convertedToCelsius = fetchedDatas.celsius - 273.15;
         convertedToCelsius = Math.round(convertedToCelsius * 10) / 10;
@@ -307,15 +308,14 @@ function Main() {
     <main>
       <div id="section1" className="text-center">
         <div className="container">
-          <h2 className="enter-a-city-interactive-sentence">
-            {writeInteractiveValue}
-          </h2>
+          <h2 className="enter-a-city-interactive-sentence">{writeInteractiveValue}</h2>
           <div className="input-container">
             <input
               onChange={addValChangeHandler}
               id="input"
               className="form-control"
               type="text"
+              placeholder="search city..."
             />
           </div>
           {cityIsValid ? "" : invalidCityMsg}
@@ -333,7 +333,7 @@ function Main() {
                 loaderEl
               ) : (
                 <div className="card-body">
-                  <h5 className="card-title">Coordinates</h5>
+                  <h5 className="card-title">City Coordinates</h5>
                   <div className="d-flex justify-content-between">
                     <p className="card-text">latitude:</p>
                     <p className="card-text">{latitude}</p>
