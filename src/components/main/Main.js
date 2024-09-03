@@ -126,7 +126,7 @@ function Main() {
 
     // console.log(city);
     fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${writeInteractiveValue}&limit=5&appid=${apiKey}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${writeInteractiveValue}&limit=5&appid=${apiKey}`
     )
       .then((response) => response.json())
       .then((data) => {
